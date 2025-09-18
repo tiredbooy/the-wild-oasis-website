@@ -1,3 +1,4 @@
+import Counter from "../components/Counter";
 
 export default async function Page() {
 
@@ -13,6 +14,7 @@ export default async function Page() {
       <ul>
         {data.map(user => <li key={user?.id}>{user.name}</li>)}
       </ul>
+      <Counter users={data} />
     </div>
   );
 }
