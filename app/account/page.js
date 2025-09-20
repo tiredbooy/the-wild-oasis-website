@@ -4,5 +4,5 @@ export const metadata = {
 }
 
 export default function Page() {
-    return <h1>Your Account</h1>
+    return <h2 className="font-semibold text-wxl text-accent-400 mb-7">Welcome, Tiredboy</h2>
 }
