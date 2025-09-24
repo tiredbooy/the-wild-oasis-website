@@ -5,8 +5,7 @@ import { useState } from "react";
 function UpdateProfileForm({ children }) {
   const [count, setCount] = useState();
 
-  const countryFlag = "pt.jpg";
-  const nationality = "portugal";
+   
 
   return (
     <form className="flex flex-col gap-6 px-12 py-8 text-lg bg-primary-900">
