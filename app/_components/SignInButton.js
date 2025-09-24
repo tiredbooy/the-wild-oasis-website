@@ -1,14 +1,14 @@
-function SignInButton() {
+import { signInAction } from "../_lib/action";
+
+function SignInButton({ provider, label, logo }) {
   return (
-    <button className='flex items-center gap-6 text-lg border border-primary-300 px-10 py-4 font-medium'>
-      <img
-        src='https://authjs.dev/img/providers/google.svg'
-        alt='Google logo'
-        height='24'
-        width='24'
-      />
-      <span>Continue with Google</span>
-    </button>
+    <form action={signInAction}>
+      <input type="hidden" name="provider" value={provider} />
+      <button className="flex items-center gap-6 px-10 py-4 text-lg font-medium transition-all duration-200 border border-primary-300 hover:bg-primary-800 rounded-xl">
+        <img src={logo} alt={`${label} logo`} height="24" width="24" />
+        <span>Continue with {label}</span>
+      </button>
+    </form>
   );
 }
 
