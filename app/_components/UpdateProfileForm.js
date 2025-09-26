@@ -1,17 +1,23 @@
 "use client";
 
 import { useState } from "react";
+import { updateGuest } from "../_lib/action";
 
-function UpdateProfileForm({ children }) {
+function UpdateProfileForm({ guest, session, children }) {
   const [count, setCount] = useState();
 
-   
+  const { fullName, email, nationality, nationalID, countryFlag } = guest || {};
 
   return (
-    <form className="flex flex-col gap-6 px-12 py-8 text-lg bg-primary-900">
+    <form
+      action={updateGuest}
+      className="flex flex-col gap-6 px-12 py-8 text-lg bg-primary-900"
+    >
       <div className="space-y-2">
         <label>Full name</label>
         <input
+          name="fullName"
+          defaultValue={fullName}
           disabled
           className="w-full px-5 py-3 rounded-sm shadow-sm bg-primary-200 text-primary-800 disabled:cursor-not-allowed disabled:bg-gray-600 disabled:text-gray-400"
         />
@@ -20,6 +26,8 @@ function UpdateProfileForm({ children }) {
       <div className="space-y-2">
         <label>Email address</label>
         <input
+          name="email"
+          defaultValue={email}
           disabled
           className="w-full px-5 py-3 rounded-sm shadow-sm bg-primary-200 text-primary-800 disabled:cursor-not-allowed disabled:bg-gray-600 disabled:text-gray-400"
         />
@@ -40,6 +48,7 @@ function UpdateProfileForm({ children }) {
       <div className="space-y-2">
         <label htmlFor="nationalID">National ID number</label>
         <input
+          defaultValue={nationalID}
           name="nationalID"
           className="w-full px-5 py-3 rounded-sm shadow-sm bg-primary-200 text-primary-800"
         />

@@ -1,7 +1,34 @@
 "use server";
 
-import { redirect } from "next/navigation";
-import { signIn, signOut } from "./auth";
+import { auth, signIn, signOut } from "./auth";
+import { supabase } from "./supabase";
+
+export async function updateGuest(formData) {
+  const session = await auth();
+  if (!session) throw new Error("You must be logged in");
+
+  // const idPattern = /^[A-Za-z0-9]{6,12}$/;
+
+  const nationalID = formData.get("nationalID");
+  const [nationality, countryFlag] = formData.get("nationality").split("%");
+
+  if (!/^[A-Za-z0-9]{6,12}$/.test(nationalID))
+    throw new Error("Please Provide a valid national ID");
+
+  const updateData = {
+    nationality,
+    countryFlag,
+    nationalID,
+  };
+
+  const { data, error } = await supabase
+    .from("guests")
+    .update(updateData)
+    .eq("id", session.user.guestId)
+
+  if (error) throw new Error("Guest could not be updated");
+
+}
 
 export async function signInAction(formData) {
   const provider = formData.get("provider") || "google";
