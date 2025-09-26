@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { updateGuest } from "../_lib/action";
+import { updateGuest } from "../_lib/actions";
 
 function UpdateProfileForm({ guest, session, children }) {
   const [count, setCount] = useState();
