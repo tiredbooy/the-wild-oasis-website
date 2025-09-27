@@ -1,7 +1,6 @@
-"use client";
 
-import { useFormStatus } from "react-dom";
 import { updateGuest } from "../_lib/actions";
+import SubmitButton from "./SubmitButton";
 
 function UpdateProfileForm({ guest, session, children }) {
   const { fullName, email, nationality, nationalID, countryFlag } = guest || {};
@@ -53,24 +52,11 @@ function UpdateProfileForm({ guest, session, children }) {
       </div>
 
       <div className="flex items-center justify-end gap-6">
-        <Button />
+        <SubmitButton pendingLabel="Updating...">Update Profile</SubmitButton>
       </div>
     </form>
   );
 }
 
-function Button() {
-  const { pending } = useFormStatus();
-
-  return (
-    <button
-      onClick={() => console.log("pending:", pending)}
-      disabled={pending}
-      className="px-8 py-4 font-semibold transition-all bg-accent-500 text-primary-800 hover:bg-accent-600 disabled:cursor-not-allowed disabled:bg-gray-500 disabled:text-gray-300"
-    >
-      {pending ? "Updating..." : "Update profile"}
-    </button>
-  );
-}
 
 export default UpdateProfileForm;
