@@ -1,6 +1,6 @@
 import SpinnerMini from "@/app/_components/SpinnerMini";
 import SubmitButton from "@/app/_components/SubmitButton";
-import { updateReservation } from "@/app/_lib/actions";
+import { updateBooking} from "@/app/_lib/actions";
 import { getBooking, getCabin } from "@/app/_lib/data-service";
 
 export default async function Page({ params }) {
@@ -15,7 +15,7 @@ export default async function Page({ params }) {
       </h2>
 
       <form
-        action={updateReservation}
+        action={updateBooking}
         className="flex flex-col gap-6 px-12 py-8 text-lg bg-primary-900"
       >
         <input
