@@ -1,10 +1,6 @@
 "use client";
 import { createContext, ReactNode, useContext, useState } from "react";
-
-interface RangeState {
-  from: string | number | null | undefined;
-  to: string | number | null | undefined;
-}
+import { RangeState } from "../_lib/types";
 
 // Define the full context value
 interface ReservationContextType {

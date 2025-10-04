@@ -10,3 +10,8 @@ export interface Cabin {
 export interface CabinFilter {
   [key : string]: "all" | "small" | "medium" | "large";
 }
+
+export interface RangeState {
+  from: string | number | null | undefined;
+  to: string | number | null | undefined;
+}
