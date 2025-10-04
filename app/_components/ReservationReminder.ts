@@ -5,8 +5,16 @@ import { format } from "date-fns";
 import { useReservation } from "./ReservationContext";
 import { motion, AnimatePresence } from "framer-motion";
 
+interface Range {
+  range : {
+    from : string | number | null
+    to : string | number | null
+  }
+  resetRange : () => void
+}
+
 function ReservationReminder() {
-  const { range, resetRange } = useReservation();
+  const { range, resetRange }  = useReservation() as Range;
 
   // Don’t render if no dates are selected
   if (!range.from || !range.to) return null;

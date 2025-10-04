@@ -4,9 +4,6 @@ import Spinner from "../_components/Spinner";
 import Filter from "../_components/Filter";
 import ReservationReminder from "../_components/ReservationReminder";
 
-// Revalidating in every hour ( 3600s )
-// export const revalidate = 3600;
-// export const revalidate = 15;
 
 export const metadata = {
   title: "Cabins",
