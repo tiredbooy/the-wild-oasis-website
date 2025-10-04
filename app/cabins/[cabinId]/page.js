@@ -4,10 +4,6 @@ import Spinner from "@/app/_components/Spinner";
 import { getCabin, getCabins } from "@/app/_lib/data-service";
 import { Suspense } from "react";
 
-// export const metadata = {
-//   title: "Cabin",
-// };
-
 export async function generateMetadata(props) {
   const params = await props.params;
   const { name } = await getCabin(params.cabinId);
@@ -28,11 +24,11 @@ export default async function Page(props) {
   const cabin = await getCabin?.(cabinId);
 
   return (
-    <div className="max-w-6xl mx-auto mt-8">
+    <div className="max-w-6xl px-4 mx-auto mt-4 sm:mt-6 lg:mt-8 sm:px-6 lg:px-0">
       <Cabin cabin={cabin} />
 
       <div>
-        <h2 className="mb-10 text-5xl font-semibold text-center text-accent-400">
+        <h2 className="px-4 mb-6 text-3xl font-semibold text-center sm:mb-8 lg:mb-10 sm:text-4xl lg:text-5xl text-accent-400">
           Reserve Cabin {cabin.name} today. Pay on arrival.
         </h2>
         <Suspense fallback={<Spinner />}>

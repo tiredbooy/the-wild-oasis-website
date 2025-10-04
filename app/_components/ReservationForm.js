@@ -26,36 +26,36 @@ function ReservationForm({ cabin, user }) {
   const createBookingWithData = createBooking.bind(null, bookingData);
 
   return (
-    <div className="scale-[1.01]">
-      <div className="flex items-center justify-between px-16 py-2 bg-primary-800 text-primary-300">
-        <p>Logged in as</p>
+    <div className="w-full">
+      <div className="flex flex-col items-start justify-between gap-2 px-4 py-3 sm:flex-row sm:items-center sm:px-8 md:px-16 sm:py-2 bg-primary-800 text-primary-300 sm:gap-0">
+        <p className="text-sm sm:text-base">Logged in as</p>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3 sm:gap-4">
           <img
-            // Important to display google profile images
             referrerPolicy="no-referrer"
-            className="h-8 rounded-full"
+            className="h-6 rounded-full sm:h-8"
             src={user.image}
             alt={user.name}
           />
-          <p>{user.name}</p>
+          <p className="text-sm sm:text-base">{user.name}</p>
         </div>
       </div>
 
       <form
-        // action={createBookingWithData}
         action={async (formData) => {
           await createBookingWithData(formData);
           resetRange();
         }}
-        className="flex flex-col gap-5 px-16 py-10 text-lg bg-primary-900"
+        className="flex flex-col gap-4 px-4 py-6 text-base sm:gap-5 sm:px-8 md:px-16 sm:py-10 sm:text-lg h-fit bg-primary-900"
       >
         <div className="space-y-2">
-          <label htmlFor="numGuests">How many guests?</label>
+          <label htmlFor="numGuests" className="text-sm sm:text-base">
+            How many guests?
+          </label>
           <select
             name="numGuests"
             id="numGuests"
-            className="w-full px-5 py-3 rounded-sm shadow-sm bg-primary-200 text-primary-800"
+            className="w-full px-3 py-2 text-sm rounded-sm shadow-sm sm:px-5 sm:py-3 sm:text-base bg-primary-200 text-primary-800"
             required
           >
             <option value="" key="">
@@ -70,20 +70,20 @@ function ReservationForm({ cabin, user }) {
         </div>
 
         <div className="space-y-2">
-          <label htmlFor="observations">
+          <label htmlFor="observations" className="text-sm sm:text-base">
             Anything we should know about your stay?
           </label>
           <textarea
             name="observations"
             id="observations"
-            className="w-full px-5 py-3 rounded-sm shadow-sm bg-primary-200 text-primary-800"
+            className="w-full px-3 sm:px-5 py-2 sm:py-3 text-sm sm:text-base rounded-sm shadow-sm bg-primary-200 text-primary-800 min-h-[100px]"
             placeholder="Any pets, allergies, special requirements, etc.?"
           />
         </div>
 
-        <div className="flex items-center justify-end gap-6">
+        <div className="flex items-center justify-end gap-4 sm:gap-6">
           {!(startDate && endDate) ? (
-            <p className="text-base text-primary-300">
+            <p className="text-sm sm:text-base text-primary-300">
               Start by selecting dates
             </p>
           ) : (
