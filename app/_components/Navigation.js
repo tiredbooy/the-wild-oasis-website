@@ -1,13 +1,12 @@
 import Link from "next/link";
 import { auth } from "../_lib/auth";
-import Image from "next/image";
 
 export default async function Navigation() {
   const session = await auth();
 
   return (
     <nav className="z-10 text-xl">
-      <ul className="flex items-center gap-16">
+      <ul className="flex items-center gap-10 md:gap-16">
         <li>
           <Link
             href="/cabins"
@@ -32,18 +31,19 @@ export default async function Navigation() {
             >
               <img
                 alt={session?.user?.name}
+                aria-label="profile image"
                 referrerPolicy="no-referrer"
                 className="h-8 rounded-full"
                 src={session?.user?.image}
               />
-              <span>Dashboard</span>
+              <span className="hidden md:block">Dashboard</span>
             </Link>
           ) : (
             <Link
               href="/account"
               className="transition-colors hover:text-accent-400"
             >
-              <span>Guest area</span>
+              <span>Guest</span>
             </Link>
           )}
         </li>
