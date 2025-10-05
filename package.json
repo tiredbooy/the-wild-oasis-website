@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
+    "@studio-freight/lenis": "^1.0.42",
     "@supabase/supabase-js": "^2.57.4",
     "date-fns": "^3.6.0",
     "motion": "^12.23.22",

@@ -11,6 +11,7 @@ const josefin = Josefin_Sans({
 import "@/app/_styles/globals.css";
 import Header from "@/app/_components/Header";
 import { ReservationProvider } from "./_components/ReservationContext";
+import LenisProvider from "./_lib/LenisProvider";
 
 export const metadata = {
   // title: "The Wild Oasis",
@@ -28,12 +29,14 @@ export default function RootLayout({ children }) {
       <body
         className={`${josefin.className} min-h-screen bg-primary-950 text-primary-100 flex flex-col antialiased relative`}
       >
-        <Header />
-        <div className="grid flex-1 px-8 py-12">
-          <main className="w-full mx-auto max-w-7xl">
-            <ReservationProvider>{children}</ReservationProvider>
-          </main>
-        </div>
+        <LenisProvider>
+          <Header />
+          <div className="grid flex-1 px-8 py-12">
+            <main className="w-full mx-auto max-w-7xl">
+              <ReservationProvider>{children}</ReservationProvider>
+            </main>
+          </div>
+        </LenisProvider>
       </body>
     </html>
   );
